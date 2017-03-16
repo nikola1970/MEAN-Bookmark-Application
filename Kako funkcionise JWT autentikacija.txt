@@ -1,0 +1,4 @@
+1. Login - okida se request sa frontend-a i sa servera se generise token (ako su ispravni login podaci) i salje se nazad (res.json(...., token: token))
+2. U UsersFactory-u login funkcija okida na server login (funkcija iznad) i onda AuthFactory poslati token ubacuje u LocalStorage
+3. Sada Interceptor na svaki request uzima token iz LocalStorage i šalje ga u Header (x-access-token)
+4. Na kraju, na svaku promenu rute iz MainController-a se šalje upit u UsersFactory da li je user ulogovan (da li postoji token u LocalStorage, isLoggedIn())? Ako jeste, okini request na "/me" routu na serveru koja ce da preuzme token iz header-a (x-access-token) i da dekodira podatke i da nam posalje username, email ili sta vec posaljemo u token kada se generise.

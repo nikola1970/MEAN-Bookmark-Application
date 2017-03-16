@@ -1,0 +1,39 @@
+
+<div ng-controller="TableController as table">
+    <modal></modal>
+    <form ng-submit="table.addBookmark()">
+        <div class="form-group">
+            <label>Bookmark name:</label>
+            <input type="text" ng-model="table.name" class="form-control">
+        </div>
+        <div class="form-group ">
+            <label>Bookmark name:</label>
+            <input type="text" ng-model="table.address" class="form-control">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary">Create Bookmark</button>
+        </div>
+    </form>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Bookmark Name:</th>
+            <th>Bookmark Adress:</th>
+            <th>Created:</th>
+            <th>Edit:</th>
+            <th>Delete:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="bookmark in table.bookmarks">
+            <td>{{bookmark.name}}</td>
+            <td><a href="{{bookmark.address}}" target="_blank">Open this bookmark</a></td>
+            <td>{{bookmark.createDate | date}}</td>
+            <td><button class="btn btn-primary glyphicon glyphicon-edit" ng-click="table.openModal(bookmark._id)"></button></td>
+            <td><button class="btn btn-danger glyphicon glyphicon-trash" ng-click="table.deleteBookmark(bookmark._id)"></button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
